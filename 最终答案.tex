@@ -1,0 +1,50 @@
+\documentclass{article}
+\usepackage[UTF8]{ctex}
+\usepackage{amsmath, amssymb}
+\title{正多边形内生成给定角度最大数目的通项公式}
+\author{DDJ_LzX}
+\date{}
+\begin{document}
+\maketitle
+设正$n$边形的内角为$\alpha = 180^\circ - \frac{360^\circ}{n}$.定义辅助量:
+\begin{itemize}
+\item 内部交点贡献$C_{\text{int}}(\theta, l)$,
+\item 边界交点贡献$C_{\text{edge}}(\theta, n, l)$,
+\item 多边形顶点贡献$C_{\text{vertex}}(\theta, n)$.
+\end{itemize}
+则最多能得到度数为$\theta$的角的个数为
+\[
+M(n, l, \theta) = C_{\text{int}} + C_{\text{edge}} + C_{\text{vertex}}.
+\]
+其中:
+\[
+C_{\text{int}}(\theta, l) = 
+\begin{cases}
+4\left\lfloor\dfrac{l^2}{4}\right\rfloor, & \theta = 90^\circ,\\[1.2em]
+2\left\lfloor\dfrac{l^2}{3}\right\rfloor, & \theta = 60^\circ \text{ 或 } 120^\circ,\\[1.2em]
+2\left\lfloor\dfrac{l^2}{4}\right\rfloor, & \text{其他}.
+\end{cases}
+\]
+\[
+C_{\text{edge}}(\theta, n, l) = 
+\begin{cases}
+4l, & \theta = 90^\circ \text{ 且 } n \text{ 为偶数},\\
+2l, & \theta = 90^\circ \text{ 且 } n \text{ 为奇数},\\[1em]
+2l, & \theta \neq 90^\circ \text{ 且 } (2\theta \bmod 180) \text{ 是 } \delta \text{ 的整数倍},\\
+l, & \theta \neq 90^\circ \text{ 且 } (2\theta \bmod 180) \text{ 不是 } \delta \text{ 的整数倍},
+\end{cases}
+\]
+其中
+\[
+\delta = 
+\begin{cases}
+\dfrac{180^\circ}{n}, & n \text{ 为奇数},\\[1em]
+\dfrac{360^\circ}{n}, & n \text{ 为偶数}.
+\end{cases}
+\]
+\[
+C_{\text{vertex}}(\theta, n) = n \cdot \mathbf{1}_{\theta = \alpha},
+\]
+这里$\mathbf{1}$为指示函数,且仅当$\alpha$为整数时可能取非零值.
+此公式综合了内部平行线组的最优配置,边界交点的最大化条件以及多边形原有顶点的贡献.注意,$\theta$为整数角度,且$0^\circ<\theta<180^\circ$.
+\end{document}
